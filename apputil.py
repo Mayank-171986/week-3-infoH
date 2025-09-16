@@ -1,6 +1,6 @@
 import seaborn as sns
 import pandas as pd
-
+import numpy as np
 
 # update/add code below ...
 def fib_rec(n):
