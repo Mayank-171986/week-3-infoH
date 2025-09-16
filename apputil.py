@@ -48,10 +48,21 @@ df_bellevue.replace("", np.nan, inplace=True)
 This function returns list of all columns sorted in ascending order of least missing values. 
 """
 def task_1():
-    column_null_count = df_bellevue.isnull().sum().to_dict()
-    sorted_column_null_count = dict(sorted(column_null_count.items(), key=lambda item: item[1], reverse= True))
+    temp_df = df_bellevue
+
+    # cleaning gender column
+    temp_df['gender'] = temp_df['gender'].replace(['?', 'g', 'h'], np.nan)
+
+    #counting null values in each column
+    column_null_count = temp_df.isnull().sum().to_dict()
     
-    return list(sorted_column_null_count.keys())
+    #sorting the columns based on null values in ascending order
+    sorted_column_null_count = dict(sorted(column_null_count.items(), key=lambda item: item[1]))
+    print(sorted_column_null_count)
+    
+    #filtered_sorted_column_null_count = {k: v for k, v in sorted_column_null_count.items() if v != 0}
+    column_list = list(sorted_column_null_count.keys())
+    return column_list
 """
 This function returns a Dataframe with two columns "year" and "total admissions" corresponding to each year. 
 """
