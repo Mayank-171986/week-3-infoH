@@ -39,7 +39,7 @@ def task_2():
     df_result['year'] = pd.to_datetime(df_filtered_data['date_in'])
     df_result['year'] = df_result['year'].dt.year
 
-    total_admissions = df_result.groupby('year').size().reset_index(name='total_admissions').dropna()
+    total_admissions = df_result.groupby('year').size().reset_index(name='total_admissions')
     return total_admissions
 
 def task_3():
