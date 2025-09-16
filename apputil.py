@@ -35,8 +35,8 @@ def task_1():
 
 def task_2():
     df_result = pd.DataFrame(columns=['year', 'total_admissions'])
-    df_filtered_data = df_bellevue.dropna(subset=['disease'])
-    df_result['year'] = pd.to_datetime(df_filtered_data['date_in'])
+    #df_filtered_data = df_bellevue.dropna(subset=['disease'])
+    df_result['year'] = pd.to_datetime(df_bellevue['date_in'])
     df_result['year'] = df_result['year'].dt.year
 
     total_admissions = df_result.groupby('year').size().reset_index(name='total_admissions')
