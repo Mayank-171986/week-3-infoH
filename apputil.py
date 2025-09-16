@@ -34,13 +34,12 @@ def task_1():
     return list(sorted_column_null_count.keys())
 
 def task_2():
-    df_immigrant_data = df_bellevue[df_bellevue['disease'] ==  'recent emigrant']
-    #print(df_immigrant_data)
     df_result = pd.DataFrame(columns=['year', 'total_admissions'])
-    df_result['year'] = pd.to_datetime(df_immigrant_data['date_in'])
+    df_filtered_data = df_bellevue.dropna(subset=['disease'])
+    df_result['year'] = pd.to_datetime(df_filtered_data['date_in'])
     df_result['year'] = df_result['year'].dt.year
 
-    total_admissions = df_result.groupby('year').size().reset_index(name='total_admissions')
+    total_admissions = df_result.groupby('year').size().reset_index(name='total_admissions').dropna()
     return total_admissions
 
 def task_3():
