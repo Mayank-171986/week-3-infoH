@@ -12,8 +12,8 @@ def fib_rec(n):
         return fib_rec(n-1) + fib_rec(n-2)
 
 def fib(n):
-    fib_series = [fib_rec(i) for i in  range(n+1)]
-    return(fib_series[n])
+    fibonacci = [fib_rec(i) for i in  range(n+1)]
+    return(fibonacci[n])
 
 def to_binary(n):
     if n == 0:
