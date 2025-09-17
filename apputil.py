@@ -55,8 +55,6 @@ def task_1():
     column_null_count = temp_df.isnull().sum().to_dict()
     
     sorted_column_null_count = dict(sorted(column_null_count.items(), key=lambda item: item[1]))
-    print(sorted_column_null_count)
-    
     column_list = list(sorted_column_null_count.keys())
     return column_list
 
